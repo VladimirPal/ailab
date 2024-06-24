@@ -1,0 +1,29 @@
+{
+  "name": "ailab",
+  "version": "0.0.1",
+  "engines": {
+    "npm": ">=10.0.0",
+    "node": ">=21.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "devScripts/commitizen-adapter/index.js"
+    }
+  },
+  "workspaces": [
+    "apps/web",
+    "apps/api",
+    "packages/log",
+    "packages/node-log",
+    "packages/eslint-config-ui",
+    "packages/eslint-config-node",
+    "packages/webpack-config"
+  ],
+  "dependencies": {
+    "core-js": "3.37.1"
+  },
+  "devDependencies": {
+    "eslint": "8.57.0",
+    "prettier": "3.3.2"
+  }
+}

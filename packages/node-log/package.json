@@ -1,0 +1,13 @@
+{
+  "name": "@ailab/node-log",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "devdependencies": {},
+  "scripts": {
+    "test": "echo \"error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "winston": "3.13.0"
+  }
+}

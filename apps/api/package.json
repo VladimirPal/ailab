@@ -1,0 +1,49 @@
+{
+  "name": "@ailab/api",
+  "version": "0.0.1",
+  "description": "Backend for ailab api",
+  "scripts": {
+    "check-prettier": "prettier --check .",
+    "write-prettier": "prettier --write .",
+    "start": "./start.sh",
+    "start-prod": "./start-prod.sh",
+    "pg-migrate": "./pg-migrate.sh",
+    "pg-seeds": "./pg-seeds.sh",
+    "testAll": "NODE_ENV=test mocha --require preload.js --file test/setup.mjs --exit 'test/**/*.test.mjs'",
+    "test": "NODE_ENV=test mocha --require preload.js --file test/setup.mjs --exit"
+  },
+  "engines": {
+    "npm": ">=10.0.0",
+    "node": ">=21.0.0"
+  },
+  "dependencies": {
+    "@ladjs/graceful": "3.2.2",
+    "@sentry/node": "8.11.0",
+    "@sentry/tracing": "7.114.0",
+    "@ailab/node-log": "*",
+    "axios": "1.7.2",
+    "bcryptjs": "2.4.3",
+    "compression": "1.7.4",
+    "cors": "2.8.5",
+    "dotenv": "16.4.5",
+    "express": "4.19.2",
+    "express-useragent": "1.0.15",
+    "jsonwebtoken": "9.0.2",
+    "module-alias": "2.2.3",
+    "node-pg-migrate": "7.5.1",
+    "pg": "8.12.0",
+    "pg-native": "3.1.0",
+    "redis": "4.6.14",
+    "slonik": "45.6.0",
+    "uuid": "10.0.0"
+  },
+  "devDependencies": {
+    "chai": "5.1.1",
+    "chai-http": "5.0.0",
+    "eslint-config-node": "*",
+    "eslint-import-resolver-alias": "1.1.2",
+    "mocha": "10.4.0",
+    "nodemon": "3.1.4",
+    "supertest": "7.0.0"
+  }
+}

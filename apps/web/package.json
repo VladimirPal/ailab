@@ -1,0 +1,30 @@
+{
+  "name": "@ailab/web",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "check-prettier": "prettier --check .",
+    "write-prettier": "prettier --write .",
+    "start": "./start.sh",
+    "clean": "rm -rf dist && mkdir dist",
+    "build": "./build.sh"
+  },
+  "engines": {
+    "npm": ">=10.0.0",
+    "node": ">=21.0.0"
+  },
+  "dependencies": {
+    "@sentry/browser": "8.11.0",
+    "@sentry/tracing": "7.114.0",
+    "@ailab/log": "*",
+    "i18next-browser-languagedetector": "8.0.0",
+    "i18next-http-backend": "2.5.2",
+    "react-i18next": "14.1.2",
+    "react-router-dom": "6.23.1"
+  },
+  "devDependencies": {
+    "@sentry/webpack-plugin": "2.19.0",
+    "@ailab/webpack-config": "*",
+    "webpack-bundle-analyzer": "4.10.2"
+  }
+}
