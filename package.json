@@ -20,7 +20,8 @@
     "packages/webpack-config"
   ],
   "dependencies": {
-    "core-js": "3.37.1"
+    "core-js": "3.37.1",
+    "process": "0.11.10"
   },
   "devDependencies": {
     "eslint": "8.57.0",
