@@ -1,0 +1,36 @@
+FROM postgres:16.2
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    lsb-release \
+    git \
+    python3 \
+    python3-pip \
+    python3-venv \
+    libpq-dev \
+    cmake \
+    wget \
+    gnupg
+
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
+    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
+    apt-get update
+
+RUN apt-get install -y postgresql-server-dev-16
+
+RUN python3 -m venv /opt/venv
+
+RUN . /opt/venv/bin/activate && \
+    pip install --upgrade pip && \
+    pip install pgcli
+
+RUN git clone https://github.com/iCyberon/pg_hashids /pg_hashids \
+    && cd /pg_hashids \
+    && make USE_PGXS=1 \
+    && make USE_PGXS=1 install
+
+RUN . /opt/venv/bin/activate && \
+    git clone https://github.com/tconbeer/harlequin /harlequin \
+    && cd /harlequin \
+    && pip install . \
+    && pip install harlequin-postgres

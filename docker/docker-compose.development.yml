@@ -1,0 +1,50 @@
+services:
+  ailab_web_app_dev:
+    image: ailab/base
+    container_name: ailab_web_app_dev
+    entrypoint: ["npm", "run"]
+    command: ["start", "--workspace=apps/web"]
+    networks:
+      ailab_network:
+        aliases:
+          - ailab_web_app
+    ports:
+      - "3031:3031"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ../:/home/ailab/app
+      - /home/ailab/app/node_modules
+
+  ailab_api_app_dev:
+    image: ailab/base
+    container_name: ailab_api_app_dev
+    entrypoint: ["npm", "run"]
+    command: ["start", "--workspace=apps/api"]
+    networks:
+      ailab_network:
+        aliases:
+          - ailab_api_app
+    ports:
+      - "3030:3030"
+    depends_on:
+      - ailab_postgres
+      - ailab_redis
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ../:/home/ailab/app
+      - /home/ailab/app/node_modules
+      - ./hosts:/etc/hosts
+
+  ailab_nginx:
+    depends_on:
+      - ailab_api_app_dev
+      - ailab_web_app_dev
+    profiles:
+      - development
+    volumes:
+      - ../devScripts/ssl/certs:/tmp/ssl
+      - ../devScripts/ssl/dhparam.pem:/etc/nginx/dhparam.pem
+      - ./nginx.conf:/etc/nginx/conf.d/ailab.conf
+      - ./nginx-web.conf:/etc/nginx/conf.d/ailab-web.conf
+      - ../:/home/ailab/app
+      - dist_web_ailab_volume:/usr/share/nginx/html/ailab

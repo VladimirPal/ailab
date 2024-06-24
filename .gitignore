@@ -14,7 +14,7 @@ workspace_deps_copy/
 
 # security
 .env
-.env.*
+.env.deploy
 
 # misc
 .DS_Store

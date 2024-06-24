@@ -1,0 +1,61 @@
+services:
+  ailab_postgres:
+    image: ailab/db
+    container_name: ailab_postgres
+    profiles:
+      - production
+      - development
+      - database
+    environment:
+      - POSTGRES_USER=ailab
+      - POSTGRES_PASSWORD=ailab
+      - POSTGRES_DB=ailab
+    networks:
+      ailab_network:
+        aliases:
+          - ailab_postgres
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ../:/var/opt/ailab:rw
+    ports:
+      - "5432:5432"
+
+  ailab_redis:
+    image: redis:7.2.4-alpine
+    container_name: ailab_redis
+    profiles:
+      - production
+      - development
+      - database
+    networks:
+      ailab_network:
+        aliases:
+          - ailab_redis
+    ports:
+      - "6379:6379"
+
+  ailab_nginx:
+    image: nginx:latest
+    container_name: ailab_nginx
+    networks:
+      ailab_network:
+        aliases:
+          - ailab_nginx
+    profiles:
+      - production
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ../devScripts/ssl/certs:/tmp/ssl
+      - ../devScripts/ssl/dhparam.pem:/etc/nginx/dhparam.pem
+      - ./nginx.conf:/etc/nginx/conf.d/ailab.conf
+      - ../:/home/ailab/app
+      - dist_web_ailab_volume:/usr/share/nginx/html/ailab
+
+networks:
+  ailab_network:
+
+volumes:
+  dist_web_ailab_volume:

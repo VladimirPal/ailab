@@ -1,0 +1,23 @@
+ARG NODE_VER=21
+FROM node:${NODE_VER}-bookworm-slim
+ENV PYTHONUNBUFFERED=1 LANG=C.UTF-8
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends python3 python3-pip g++ make \
+  bash openssh-client libpq-dev \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+  && adduser ailab \
+  && mkdir -p /home/ailab/app \
+  && mkdir -p /home/ailab/app/apps/web/dist \
+  && chown -R ailab:ailab /home/ailab/app
+
+RUN npm install pm2 -g
+
+RUN mkdir -p /home/ailab/app/apps/web/dist
+
+USER ailab
+WORKDIR /home/ailab/app
+COPY --chown=ailab:ailab workspace_deps_copy/ ./
+
+RUN npm install

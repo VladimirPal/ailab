@@ -9,7 +9,12 @@ const Dotenv = require("dotenv-webpack");
 const baseWebpackConfig = require("@ailab/webpack-config");
 const appWebpackConfig = require("./webpack.config");
 
-require("dotenv").config({ path: path.join(__dirname, "..", ".env.deploy") });
+const dotenv = require("dotenv");
+dotenv.config({ path: path.join(__dirname, "..", ".env.deploy.defaults") });
+const deployEnvPath = path.join(__dirname, "..", ".env.deploy");
+if (fs.existsSync(deployEnvPath)) {
+  dotenv.config({ path: deployEnvPath, override: true });
+}
 
 const sslDevPath = path.resolve(__dirname, "../../../devScripts/ssl", "certs");
 
@@ -30,6 +35,7 @@ module.exports = (env) => ({
     }),
     new Dotenv({
       path: path.join(__dirname, "..", "./.env"),
+      defaults: true,
     }),
     new ReactRefreshWebpackPlugin(),
     new webpack.DefinePlugin({
