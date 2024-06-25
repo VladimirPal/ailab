@@ -16,6 +16,7 @@ import * as Tracing from "@sentry/tracing";
 
 import logReqMiddleware from "./middleware/logReq.mjs";
 import { router as systemRouter } from "./router/system.mjs";
+import { router as authRouter } from "./router/auth.mjs";
 
 //import socketServer from "./socketApp";
 import {
@@ -40,7 +41,7 @@ if (devEnv) {
   log.demo();
 }
 
-if (!devEnv) {
+if (!devEnv && !testEnv) {
   Sentry.init({
     dsn: process.env.SENTRY_DSN,
     release: pjson.version,
@@ -88,6 +89,7 @@ app.use(
 );
 
 app.use("/api/system", systemRouter);
+app.use("/api/auth", authRouter);
 
 let server = http.createServer(app);
 
@@ -112,7 +114,7 @@ if (appConfig.useSSL) {
   server = https.createServer(credentials, app);
 }
 
-if (!devEnv) {
+if (!devEnv && !testEnv) {
   app.use(Sentry.Handlers.errorHandler());
 }
 
@@ -136,7 +138,7 @@ if (!testEnv) {
 
           log.info(`@ailab-api server running at ${url}`);
 
-          if (!devEnv) {
+          if (!devEnv && !testEnv) {
             await pushChatMessage("msg-to-debug-chat", "🚀 Launched!");
           }
 
@@ -161,7 +163,7 @@ if (!testEnv) {
           log.info("no process.send access");
         }
       },
-      devEnv ? 0 : 5000,
+      (devEnv || testEnv) ? 0 : 5000,
     );
   });
 }

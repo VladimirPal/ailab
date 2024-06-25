@@ -9,8 +9,8 @@
     "start-prod": "./start-prod.sh",
     "pg-migrate": "./pg-migrate.sh",
     "pg-seeds": "./pg-seeds.sh",
-    "testAll": "NODE_ENV=test mocha --require preload.js --file test/setup.mjs --exit 'test/**/*.test.mjs'",
-    "test": "NODE_ENV=test mocha --require preload.js --file test/setup.mjs --exit"
+    "testAll": "NODE_ENV=test mocha --require preload.js --file tests/setup.mjs --exit 'tests/**/*.test.mjs'",
+    "test": "NODE_ENV=test mocha --require preload.js --file tests/setup.mjs --exit"
   },
   "engines": {
     "npm": ">=10.0.0",
