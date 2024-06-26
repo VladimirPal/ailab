@@ -1,0 +1,33 @@
+{
+  "name": "@ailab/components",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "storybook": "storybook dev -p 6006"
+  },
+  "dependencies": {
+    "@emotion/cache": "11.11.0",
+    "@emotion/css": "11.11.2",
+    "@emotion/react": "11.11.4",
+    "@emotion/styled": "11.11.5",
+    "date-fns": "3.6.0",
+    "normalize.css": "8.0.1",
+    "process": "0.11.10",
+    "prop-types": "15.8.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-select": "5.8.0",
+    "@ailab/ui-toolkit": "*"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "7.24.7",
+    "@emotion/babel-plugin": "11.11.0",
+    "@storybook/addon-viewport": "8.1.10",
+    "@storybook/addon-webpack5-compiler-babel": "3.0.3",
+    "@storybook/react-webpack5": "8.1.10",
+    "@ailab/webpack-config": "*",
+    "storybook": "8.1.10",
+    "storybook-dark-mode": "4.0.2"
+  }
+}

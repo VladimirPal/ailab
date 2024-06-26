@@ -17,7 +17,9 @@
     "packages/node-log",
     "packages/eslint-config-ui",
     "packages/eslint-config-node",
-    "packages/webpack-config"
+    "packages/webpack-config",
+    "packages/ui-toolkit",
+    "packages/components"
   ],
   "dependencies": {
     "core-js": "3.37.1",

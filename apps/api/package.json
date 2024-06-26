@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@ladjs/graceful": "3.2.2",
-    "@sentry/node": "8.11.0",
+    "@sentry/node": "8.12.0",
     "@sentry/tracing": "7.114.0",
     "@ailab/node-log": "*",
     "axios": "1.7.2",
@@ -42,7 +42,7 @@
     "chai-http": "5.0.0",
     "eslint-config-node": "*",
     "eslint-import-resolver-alias": "1.1.2",
-    "mocha": "10.4.0",
+    "mocha": "10.5.1",
     "nodemon": "3.1.4",
     "supertest": "7.0.0"
   }
