@@ -7,10 +7,12 @@ else
   exit 1
 fi
 
+SCRIPT_DIR="$(dirname "$0")"
 MIGRATION_NAME=""
 RUN_CREATE=false
 RUN_UP=false
 USE_TEST_DB=false
+TEMPLATE_FILE="${SCRIPT_DIR}/migrations/templates/migration-template.js"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -56,7 +58,7 @@ fi
 
 if $RUN_CREATE; then
   echo "Creating migration: $MIGRATION_NAME"
-  node-pg-migrate create "$MIGRATION_NAME"
+  node-pg-migrate create "$MIGRATION_NAME" --template-file-name "$TEMPLATE_FILE"
 fi
 
 if $RUN_UP; then
