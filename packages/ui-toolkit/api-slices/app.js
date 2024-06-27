@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import ailabApi from "@ailab/api-client/ailabApi";
 
 export const REDUCER_NAME = "app";
 
@@ -74,7 +75,7 @@ export const initialize =
       return;
     }
 
-    //ailabApi.setJWT(jwt);
+    ailabApi.setJWT(jwt);
 
     try {
       //const profile = await ailabApi.me();
@@ -84,11 +85,12 @@ export const initialize =
         email: "",
       };
       dispatch(actions.setProfile(profile));
+      navigate("/");
     } catch (err) {
       log.error(err);
       if (err.response.data.errorMessage === "jwt expired") {
         window.localStorage.removeItem("ailabJWT");
-        //ailabApi.setJWT(null);
+        ailabApi.setJWT(null);
         dispatch(
           actions.setUiState({
             isAuthorized: false,

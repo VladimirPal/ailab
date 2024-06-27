@@ -4,23 +4,23 @@ import PropTypes from "prop-types";
 import * as S from "./styled";
 
 const Button = ({
-  appearance,
-  children,
-  className,
   id,
-  onClick,
-  spacing,
-  withIcon,
-  withBorder,
-  highlightHovered,
-  bigPadding,
-  isDisabled,
-  isSelected,
-  isLoading,
-  fitContent,
-  fit,
-  type,
   style,
+  appearance = "default",
+  children = null,
+  className = "",
+  onClick = () => {},
+  spacing = "default",
+  withIcon = false,
+  withBorder = false,
+  highlightHovered = false,
+  bigPadding = null,
+  isDisabled = false,
+  isSelected = false,
+  isLoading = null,
+  fitContent = false,
+  fit = false,
+  type = "button",
 }) => (
   <S.Button
     id={id}
@@ -73,23 +73,6 @@ Button.propTypes = {
   type: PropTypes.string,
   bigPadding: PropTypes.bool,
   style: PropTypes.object,
-};
-
-Button.defaultProps = {
-  isDisabled: false,
-  withIcon: false,
-  withBorder: false,
-  isSelected: false,
-  highlightHovered: false,
-  fitContent: false,
-  fit: false,
-  children: null,
-  bigPadding: null,
-  className: "",
-  type: "button",
-  spacing: "default",
-  appearance: "default",
-  onClick: () => {},
 };
 
 export default Button;

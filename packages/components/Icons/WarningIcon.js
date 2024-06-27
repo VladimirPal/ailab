@@ -8,16 +8,19 @@ const sizes = {
   huge: ['64px', '64px'],
 };
 
-const WarningIcon = (props) => {
+const WarningIcon = ({
+  size = 'middle',
+  shouldPadding = false,
+}) => {
   return (
     <svg
       xmlns="https://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      width={sizes[props.size][0]}
-      height={sizes[props.size][1]}
+      width={sizes[size][0]}
+      height={sizes[size][1]}
       fill="currentColor"
       style={{
-        ...(props.shouldPadding
+        ...(shouldPadding
           ? {
               padding: '4px',
             }
@@ -35,10 +38,6 @@ WarningIcon.propTypes = {
     PropTypes.array,
   ]),
   shouldPadding: PropTypes.bool,
-};
-WarningIcon.defaultProps = {
-  size: 'middle',
-  shouldPadding: false,
 };
 
 export default WarningIcon;

@@ -18,6 +18,8 @@
     "packages/eslint-config-ui",
     "packages/eslint-config-node",
     "packages/webpack-config",
+    "packages/api-client",
+    "packages/utils",
     "packages/ui-toolkit",
     "packages/components"
   ],
