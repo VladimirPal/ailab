@@ -4,6 +4,12 @@
 🚀 The project is developing fully on live stream 📺  
 👉 [Playlist link!][playlist-link]
 
+Join me for a live coding session where we dive into the development of a self-hosted ChatGPT application using OpenAI API.  
+We'll be working on a monorepo that includes both backend and frontend components.  
+Whether you're a seasoned developer or just curious about AI and web development, there's something for everyone.  
+Bring your questions, and let's code together!  
+Don't forget to [subscribe](https://www.youtube.com/channel/UC5mNY9Aiajsbt-ltTuXQejA?view_as=subscriber&sub_confirmation=1) and hit the notification bell to stay updated on future streams.
+
 # 💡 Usage
 We use [SemVer][semver] specification for versioning, which dictate how version numbers are assigned and incremented.
 
