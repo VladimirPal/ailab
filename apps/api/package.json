@@ -17,10 +17,12 @@
     "node": ">=21.0.0"
   },
   "dependencies": {
+    "@ailab/node-log": "*",
     "@ladjs/graceful": "3.2.2",
     "@sentry/node": "8.12.0",
     "@sentry/tracing": "7.114.0",
-    "@ailab/node-log": "*",
+    "@socket.io/redis-adapter": "8.3.0",
+    "@socket.io/redis-emitter": "5.1.0",
     "axios": "1.7.2",
     "bcryptjs": "2.4.3",
     "compression": "1.7.4",
@@ -35,6 +37,7 @@
     "pg-native": "3.1.0",
     "redis": "4.6.14",
     "slonik": "45.6.0",
+    "socket.io": "4.7.5",
     "uuid": "10.0.0"
   },
   "devDependencies": {

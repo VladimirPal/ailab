@@ -8,11 +8,13 @@ else
 fi
 
 SCRIPT_DIR="$(dirname "$0")"
+TEMPLATE_FILE="${SCRIPT_DIR}/migrations/templates/migration-template.js"
 MIGRATION_NAME=""
 RUN_CREATE=false
 RUN_UP=false
 USE_TEST_DB=false
-TEMPLATE_FILE="${SCRIPT_DIR}/migrations/templates/migration-template.js"
+USE_DOCKER=false
+docker_container="ailab_api_app_dev"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -34,8 +36,12 @@ while [[ $# -gt 0 ]]; do
       USE_TEST_DB=true
       shift
       ;;
+    --docker)
+      USE_DOCKER=true
+      shift
+      ;;
     *)
-      echo "Usage: $0 [-c|--create migration_name] [-u|--up] [--test-db]" >&2
+      echo "Usage: $0 [-c|--create migration_name] [-u|--up] [--test-db] [--docker]" >&2
       exit 1
       ;;
   esac
@@ -43,7 +49,7 @@ done
 
 if ! $RUN_CREATE && ! $RUN_UP && ! $USE_TEST_DB; then
   echo "Error: No arguments provided. Please specify an operation to perform." >&2
-  echo "Usage: $0 [-c|--create migration name] [-u|--up] [--test-db]" >&2
+  echo "Usage: $0 [-c|--create migration name] [-u|--up] [--test-db] [--docker]" >&2
   exit 1
 fi
 
@@ -58,10 +64,22 @@ fi
 
 if $RUN_CREATE; then
   echo "Creating migration: $MIGRATION_NAME"
-  node-pg-migrate create "$MIGRATION_NAME" --template-file-name "$TEMPLATE_FILE"
+  if $USE_DOCKER; then
+    docker exec -it $docker_container npm run pg-migrate --workspace=apps/api -- --create $MIGRATION_NAME
+  else
+    node-pg-migrate create "$MIGRATION_NAME" --template-file-name "$TEMPLATE_FILE"
+  fi
 fi
 
 if $RUN_UP; then
   echo "Running migrations up"
-  node-pg-migrate up
+  if $USE_DOCKER; then
+    if $USE_TEST_DB; then
+      docker exec -it $docker_container npm run pg-migrate --workspace=apps/api -- --up --test-db
+    else
+      docker exec -it $docker_container npm run pg-migrate --workspace=apps/api -- --up
+    fi
+  else
+    node-pg-migrate up
+  fi
 fi

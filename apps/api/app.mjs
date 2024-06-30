@@ -18,16 +18,16 @@ import logReqMiddleware from "./middleware/logReq.mjs";
 import { router as systemRouter } from "./router/system.mjs";
 import { router as authRouter } from "./router/auth.mjs";
 
-//import socketServer from "./socketApp";
+import socketServer from "./socketApp.mjs";
 import {
   redisClient,
-  //redisEmitterClient,
+  redisEmitterClient,
   pubClient,
   subClient,
 } from "./redisClient.mjs";
 import { initializeDB } from "./db.mjs";
 //import { checkDeployCommit } from "./utils/deploy.mjs";
-import { pushChatMessage } from "./utils/chat.mjs";
+// import { pushChatMessage } from "./utils/chat.mjs";
 import pjson from './package.json' assert { type: 'json' };
 
 const __filename = fileURLToPath(import.meta.url);
@@ -123,7 +123,7 @@ if (!testEnv) {
   Promise.all([
     initializeDB(),
     redisClient.connect(),
-    //redisEmitterClient.connect(),
+    redisEmitterClient.connect(),
     pubClient.connect(),
     subClient.connect(),
   ]).then(() => {
@@ -138,9 +138,11 @@ if (!testEnv) {
 
           log.info(`@ailab-api server running at ${url}`);
 
+          /*
           if (!devEnv && !testEnv) {
             await pushChatMessage("msg-to-debug-chat", "🚀 Launched!");
           }
+          */
 
           log.tmp({ healthcheckUrl: appConfig.healthcheckUrl });
 
@@ -149,14 +151,12 @@ if (!testEnv) {
           //await checkDeployCommit();
         });
 
-        /*
         if (devEnv) {
           socketServer({
             server,
             devEnv,
           });
         }
-        */
         try {
           process.send("ready");
         } catch (err) {
@@ -172,15 +172,17 @@ function terminateNode(signal) {
   server.close(async () => {
     log.info("HTTPS server closed");
 
+    /*
     if (!devEnv) {
       await pushChatMessage(
         "msg-to-ci-cd-chat",
         `💥 Catch Terminate signal ${signal}!`,
       );
     }
+    */
 
     redisClient.disconnect();
-    //redisEmitterClient.disconnect();
+    redisEmitterClient.disconnect();
     pubClient.disconnect();
     subClient.disconnect();
 
@@ -196,7 +198,7 @@ function terminateNode(signal) {
     () => {
       log.info("Server did not closed!");
       redisClient.disconnect();
-      //redisEmitterClient.disconnect();
+      redisEmitterClient.disconnect();
       pubClient.disconnect();
       subClient.disconnect();
 

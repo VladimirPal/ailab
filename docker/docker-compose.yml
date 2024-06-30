@@ -10,16 +10,17 @@ services:
       - POSTGRES_USER=ailab
       - POSTGRES_PASSWORD=ailab
       - POSTGRES_DB=ailab
+    ports:
+      - "5432:5432"
     networks:
       ailab_network:
         aliases:
           - ailab_postgres
     volumes:
+      - ailab_pgdata:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - /var/run/docker.sock:/var/run/docker.sock
       - ../:/var/opt/ailab:rw
-    ports:
-      - "5432:5432"
 
   ailab_redis:
     image: redis:7.2.4-alpine
@@ -28,12 +29,12 @@ services:
       - production
       - development
       - database
+    ports:
+      - "6379:6379"
     networks:
       ailab_network:
         aliases:
           - ailab_redis
-    ports:
-      - "6379:6379"
 
   ailab_nginx:
     image: nginx:latest
@@ -58,4 +59,5 @@ networks:
   ailab_network:
 
 volumes:
-  dist_web_ailab_volume:
+  ailab_pgdata:
+  ailab_dist_web_volume:

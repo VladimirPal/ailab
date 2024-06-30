@@ -1,5 +1,5 @@
 import { createClient } from "redis";
-//import { Emitter } from '@socket.io/redis-emitter';
+import { Emitter } from "@socket.io/redis-emitter";
 import * as Sentry from "@sentry/node";
 
 export const redisClient = createClient({
@@ -16,11 +16,11 @@ const redisSocketClient = createClient({
   },
 });
 redisSocketClient.on("error", (err) => {
-  logger.error(err);
+  log.error(err);
   Sentry.captureException(err);
 });
 
 export const pubClient = redisSocketClient.duplicate();
 export const subClient = redisSocketClient.duplicate();
 export const redisEmitterClient = redisSocketClient.duplicate();
-//export const redisEmitter = new Emitter(redisEmitterClient);
+export const redisEmitter = new Emitter(redisEmitterClient);
