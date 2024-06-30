@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query/react";
 
+import aiChatApi from "@ailab/ui-toolkit/api-slices/aiChat";
+
 import rootReducer from "../reducers";
 
 function configure() {
@@ -10,7 +12,9 @@ function configure() {
     middleware: (getDefaultMiddleWare) => {
       return getDefaultMiddleWare({
         immutableCheck: false,
-      }).concat([]);
+      }).concat([
+        aiChatApi.middleware,
+      ]);
     },
   });
   setupListeners(store.dispatch);

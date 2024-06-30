@@ -14,8 +14,9 @@ module.exports = {
   origin: ["https://ailab.lan"],
   deployHosts: [],
   jwtSecret: process.env.JWT_SECRET,
+  openAIKey: process.env.OPENAI_API_KEY,
   dbUrl:
     process.env.NODE_ENV === "test"
       ? process.env.TEST_DATABASE_URL
       : process.env.DATABASE_URL,
-}
+};

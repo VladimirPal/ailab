@@ -33,6 +33,7 @@
     "jsonwebtoken": "9.0.2",
     "module-alias": "2.2.3",
     "node-pg-migrate": "7.5.1",
+    "openai": "4.52.2",
     "pg": "8.12.0",
     "pg-native": "3.1.0",
     "redis": "4.6.14",

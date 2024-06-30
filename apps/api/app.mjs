@@ -17,6 +17,7 @@ import * as Tracing from "@sentry/tracing";
 import logReqMiddleware from "./middleware/logReq.mjs";
 import { router as systemRouter } from "./router/system.mjs";
 import { router as authRouter } from "./router/auth.mjs";
+import { router as chatRouter } from "./router/chat.mjs";
 
 import socketServer from "./socketApp.mjs";
 import {
@@ -90,6 +91,7 @@ app.use(
 
 app.use("/api/system", systemRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/chat", chatRouter);
 
 let server = http.createServer(app);
 
