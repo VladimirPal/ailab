@@ -1,6 +1,9 @@
 # ailab
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
+🚀 The project is developing fully on live stream 📺  
+👉 [Playlist link!][playlist-link]
+
 # 💡 Usage
 We use [SemVer][semver] specification for versioning, which dictate how version numbers are assigned and incremented.
 
@@ -190,3 +193,4 @@ https://iconbuddy.app - Over 180k+ open source icons
 [redux-resource]: https://github.com/jmeas/redux-resource
 [reselect]: https://github.com/reactjs/reselect
 [styled-components]: https://www.styled-components.com
+[playlist-link]: https://www.youtube.com/watch?v=xYgbyduJFak&list=PL88NI3LYRtJFA-nH-JuHojUIHcBLWeUu9
