@@ -1,4 +1,4 @@
-# ailab
+# AiLab
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 🚀 The project is developing fully on live stream 📺  
@@ -9,6 +9,16 @@ We'll be working on a monorepo that includes both backend and frontend component
 Whether you're a seasoned developer or just curious about AI and web development, there's something for everyone.  
 Bring your questions, and let's code together!  
 Don't forget to [subscribe](https://www.youtube.com/channel/UC5mNY9Aiajsbt-ltTuXQejA?view_as=subscriber&sub_confirmation=1) and hit the notification bell to stay updated on future streams.
+
+## 🕴️Jump to:
+- [💡 Usage](#-usage)
+  - [⛓️ Cross Dependencies in npm](#%EF%B8%8F-cross-dependencies-in-npm)
+  - [🌿 Git flow](#-git-flow)
+  - [💬 Commit message](#-commit-message)
+  - [🤝 Contributing](#-contributing)
+  - [📝 Preparing a good PR](#-preparing-a-good-pr)
+  - [🔧 Maintaining](#-maintaining)
+  - [🏷️ Naming convention](#%EF%B8%8F-naming-convention)
 
 # 💡 Usage
 We use [SemVer][semver] specification for versioning, which dictate how version numbers are assigned and incremented.
@@ -188,10 +198,6 @@ All selectors should have a 'get' prefix.
 #### Actions
 
 Actions must begin with some verb - set, fetch, fill, add, delete, etc...
-
-# 🔗 Usefull links
-
-https://iconbuddy.app - Over 180k+ open source icons
 
 [react]: https://reactjs.org/
 [redux]: http://redux.js.org
