@@ -4,11 +4,15 @@
 🚀 The project is developing fully on live stream 📺  
 👉 [Playlist link!][playlist-link]
 
-Join me for a live coding session where we dive into the development of a self-hosted ChatGPT application using OpenAI API.  
+Join me for a live coding session where we dive into the development of a self-hosted ChatGPT
+application using OpenAI API.  
 We'll be working on a monorepo that includes both backend and frontend components.  
-Whether you're a seasoned developer or just curious about AI and web development, there's something for everyone.  
+Whether you're a seasoned developer or just curious about AI and web development, there's something
+for everyone.  
 Bring your questions, and let's code together!  
-Don't forget to [subscribe](https://www.youtube.com/channel/UC5mNY9Aiajsbt-ltTuXQejA?view_as=subscriber&sub_confirmation=1) and hit the notification bell to stay updated on future streams.
+Don't forget to
+[subscribe](https://www.youtube.com/channel/UC5mNY9Aiajsbt-ltTuXQejA?view_as=subscriber&sub_confirmation=1)
+and hit the notification bell to stay updated on future streams.
 
 ## 🕴️Jump to:
 - [💡 Usage](#-usage)
@@ -21,35 +25,44 @@ Don't forget to [subscribe](https://www.youtube.com/channel/UC5mNY9Aiajsbt-ltTuX
   - [🏷️ Naming convention](#%EF%B8%8F-naming-convention)
 
 # 💡 Usage
-We use [SemVer][semver] specification for versioning, which dictate how version numbers are assigned and incremented.
+We use [SemVer][semver] specification for versioning, which dictate how version numbers are assigned
+and incremented.
 
-Each new **Major** and **Minor** version changes is scheduled in task management system - Jira/Trello/Whatever
+Each new **Major** and **Minor** version changes is scheduled in task management system -
+Jira/Trello/Whatever
 **Patch** versions is for hotfixes or features which we need to deploy for some reason right now.
 
 ## ⛓️ Cross Dependencies in npm
-Avoid listing external packages in multiple package.json files to prevent confusion and version mismatch problems.  
+Avoid listing external packages in multiple package.json files to prevent confusion and version
+mismatch problems.  
 
-For instance, if `@ailab/web` app depends on `@ailab/components` internal package and `use-debounce` external npm package, there is no need to put use-debounce in package.json of `@ailab/web`
+For instance, if `@ailab/web` app depends on `@ailab/components` internal package and `use-debounce`
+external npm package, there is no need to put use-debounce in package.json of `@ailab/web`
+since the package is already listed in `@ailab/components` package.json.
 
 [semver]: http://semver.org/
 [git-flow-cheatsheet]: http://danielkummer.github.io/git-flow-cheatsheet
 
 ## 🌿 Git flow
 
-We use [Vincent Driessen's branching model.](http://nvie.com/posts/a-successful-git-branching-model/)
+We use [Vincent Driessen's branching
+model.](http://nvie.com/posts/a-successful-git-branching-model/)
 
 Read details here:
 
 - http://nvie.com/posts/a-successful-git-branching-model/
 - http://danielkummer.github.io/git-flow-cheatsheet/
 
-To make the git flow experience smoother you can use **custom git commands**(regular shell scripts) -
+To make the git flow experience smoother you can use **custom git commands**(regular shell scripts)
+-
 [git-flow](https://github.com/petervanderdoes/gitflow-avh)
 
-- **[Installation instruction](https://github.com/petervanderdoes/gitflow-avh/wiki/Installing-on-Mac-OS-X)**
+- **[Installation
+  instruction](https://github.com/petervanderdoes/gitflow-avh/wiki/Installing-on-Mac-OS-X)**
 - **[git-flow commands](https://github.com/petervanderdoes/gitflow-avh/wiki#reference)**
 
-[Setup](https://github.com/petervanderdoes/gitflow-avh#initialization) a git repository for **git-flow** usage(store **
+[Setup](https://github.com/petervanderdoes/gitflow-avh#initialization) a git repository for
+**git-flow** usage(store **
 git-flow** config in .git/config):
 
 ```sh
@@ -63,7 +76,8 @@ We use [conventional commits specification](https://conventionalcommits.org/) fo
 #### Commitizen
 
 To ensure that all commit messages are formatted correctly, you can use
-[Commitizen](http://commitizen.github.io/cz-cli/) cli tool. It provides interactive interface that creates your commit
+[Commitizen](http://commitizen.github.io/cz-cli/) cli tool. It provides interactive interface that
+creates your commit
 messages for you.
 
 ```sh
@@ -97,7 +111,8 @@ git checkout -b feature/<feature> develop
 git flow feature start <feature>
 ```
 
-If your feature/bug/whatever have an **github or trello issue** then use issue id as feature name. For instance:
+If your feature/bug/whatever have an **github or trello issue** then use issue id as feature name.
+For instance:
 
 ```sh
 git checkout -b feature/1 develop
@@ -137,21 +152,28 @@ git flow feature finish
 
 ## 📝 Preparing a good PR
 
-- A pull request should have a specific goal and have a descriptive title. Do not put multiple unrelated changes in a
+- A pull request should have a specific goal and have a descriptive title. Do not put multiple
+  unrelated changes in a
   single pull request
-- Do not include any changes that are irrelevant to the goal of the pull request. This includes refactoring or
+- Do not include any changes that are irrelevant to the goal of the pull request. This includes
+  refactoring or
   reformatting unrelated code and changing or adding auxiliary files
   (.gitignore, etc.) in a way that is not related to your main changes.
-- Make logical, not historical commits. Before you submit your work for review, you should rebase your branch (**git
-  rebase -i**) and regroup your changes into logical commits. Logical commits achieve different parts of the pull
-  request goal. Each commit should have a descriptive commit message. Logical commits within a single pull request
+- Make logical, not historical commits. Before you submit your work for review, you should rebase
+  your branch (**git
+  rebase -i**) and regroup your changes into logical commits. Logical commits achieve different
+parts of the pull
+  request goal. Each commit should have a descriptive commit message. Logical commits within a
+single pull request
   rarely overlap in the lines of code they touch.
-- If you want to amend your pull request, rewrite the branch and force-push it instead of adding new (historical)
+- If you want to amend your pull request, rewrite the branch and force-push it instead of adding new
+  (historical)
   commits or creating a new pull request.
 
 ## 🔧 Maintaining
 
-To start a release, use the git flow release command. It creates a release branch created from the 'develop' branch.
+To start a release, use the git flow release command. It creates a release branch created from the
+'develop' branch.
 
 ```sh
 git flow release start RELEASE
@@ -188,7 +210,8 @@ https://github.com/ryanmcdermott/clean-code-javascript
 
 #### Variables
 
-Use declarative style and avoid single letter names. If you use abbreveature leave comment with deciphering
+Use declarative style and avoid single letter names. If you use abbreveature leave comment with
+deciphering
 abbreviations.
 
 #### Selectors
