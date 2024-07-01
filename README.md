@@ -6,7 +6,7 @@ AiLab in active developing stage and currently rely only on `OpenAI API`.
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-🚀 The project is developing fully on live stream 📺  
+The project is developing fully on live stream 📺  
 👉 [Playlist link!][playlist-link]
 
 Join me for a live coding session where we dive into the development of a self-hosted ChatGPT
