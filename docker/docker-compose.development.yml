@@ -8,8 +8,6 @@ services:
       ailab_network:
         aliases:
           - ailab_web_app
-    ports:
-      - "3031:3031"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ../:/home/ailab/app
@@ -24,8 +22,6 @@ services:
       ailab_network:
         aliases:
           - ailab_api_app
-    ports:
-      - "3030:3030"
     depends_on:
       - ailab_postgres
       - ailab_redis
@@ -41,10 +37,3 @@ services:
       - ailab_web_app_dev
     profiles:
       - development
-    volumes:
-      - ../devScripts/ssl/certs:/tmp/ssl
-      - ../devScripts/ssl/dhparam.pem:/etc/nginx/dhparam.pem
-      - ./nginx.conf:/etc/nginx/conf.d/ailab.conf
-      - ./nginx-web.conf:/etc/nginx/conf.d/ailab-web.conf
-      - ../:/home/ailab/app
-      - ailab_dist_web_volume:/usr/share/nginx/html/ailab

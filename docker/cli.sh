@@ -18,6 +18,7 @@ case "$PROFILE" in
     COMPOSE_FILES="${COMPOSE_FILES} -f \"${SCRIPT_DIR}/docker-compose.development.yml\""
     ;;
   database)
+    COMPOSE_FILES="${COMPOSE_FILES} -f \"${SCRIPT_DIR}/docker-compose.database.yml\""
     ;;
   *)
     echo "Invalid profile: $PROFILE"

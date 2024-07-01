@@ -10,8 +10,6 @@ services:
       - POSTGRES_USER=ailab
       - POSTGRES_PASSWORD=ailab
       - POSTGRES_DB=ailab
-    ports:
-      - "5432:5432"
     networks:
       ailab_network:
         aliases:
@@ -29,8 +27,6 @@ services:
       - production
       - development
       - database
-    ports:
-      - "6379:6379"
     networks:
       ailab_network:
         aliases:
@@ -52,8 +48,9 @@ services:
       - ../devScripts/ssl/certs:/tmp/ssl
       - ../devScripts/ssl/dhparam.pem:/etc/nginx/dhparam.pem
       - ./nginx.conf:/etc/nginx/conf.d/ailab.conf
+      - ./nginx-web.conf:/etc/nginx/conf.d/ailab-web.conf
       - ../:/home/ailab/app
-      - dist_web_ailab_volume:/usr/share/nginx/html/ailab
+      - ailab_dist_web_volume:/usr/share/nginx/html/ailab
 
 networks:
   ailab_network:

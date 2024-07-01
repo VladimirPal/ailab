@@ -1,0 +1,12 @@
+services:
+  ailab_postgres:
+    profiles:
+      - database
+    ports:
+      - "5432:5432"
+
+  ailab_redis:
+    profiles:
+      - database
+    ports:
+      - "6379:6379"

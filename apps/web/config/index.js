@@ -9,7 +9,7 @@ const req = (params) => axios(params);
 const config = {
   useSentry: process.env.USE_SENTRY === "true",
   ailabApiUrl: process.env.AILAB_API_URL,
-  socketUrl: 'ws://api.ailab.internal:3030',
+  socketUrl: process.env.AILAB_SOCKET_URL,
 };
 
 ailabApi.init({ req, baseUrl: config.ailabApiUrl });
