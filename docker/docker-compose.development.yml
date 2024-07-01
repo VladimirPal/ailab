@@ -12,6 +12,11 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ../:/home/ailab/app
       - /home/ailab/app/node_modules
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3031"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   ailab_api_app_dev:
     image: ailab/base
@@ -30,10 +35,17 @@ services:
       - ../:/home/ailab/app
       - /home/ailab/app/node_modules
       - ./hosts:/etc/hosts
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3030/api/system/healthcheck"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   ailab_nginx:
     depends_on:
-      - ailab_api_app_dev
-      - ailab_web_app_dev
+      ailab_api_app_dev:
+        condition: service_healthy
+      ailab_web_app_dev:
+        condition: service_healthy
     profiles:
       - development

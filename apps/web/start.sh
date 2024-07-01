@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-source "$(dirname "$0")/.env.deploy" ;
+source "$(dirname "$0")/.env.deploy.defaults"
+
+if [ -f "$(dirname "$0")/.env.deploy" ]; then
+  source "$(dirname "$0")/.env.deploy"
+fi
 
 if [ -z "$DEV_SERVER_PORT" ]; then
   echo "Error: DEV_SERVER_PORT is not set in .env.deploy" >&2

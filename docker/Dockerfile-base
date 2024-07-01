@@ -4,7 +4,7 @@ ENV PYTHONUNBUFFERED=1 LANG=C.UTF-8
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends python3 python3-pip g++ make \
-  bash openssh-client libpq-dev \
+  bash openssh-client libpq-dev curl \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
   && adduser ailab \
