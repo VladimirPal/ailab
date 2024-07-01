@@ -1,4 +1,9 @@
-# AiLab
+# 🤖 AiLab
+The monorepo is dedicated to housing `packages/` powering the development of web `apps/` that provides self-hosted
+AI chat.
+
+AiLab in active developing stage and currently rely only on `OpenAI API`.
+
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 🚀 The project is developing fully on live stream 📺  
@@ -54,8 +59,8 @@ Read details here:
 - http://danielkummer.github.io/git-flow-cheatsheet/
 
 To make the git flow experience smoother you can use **custom git commands**(regular shell scripts)
--
-[git-flow](https://github.com/petervanderdoes/gitflow-avh)
+
+- [git-flow](https://github.com/petervanderdoes/gitflow-avh)
 
 - **[Installation
   instruction](https://github.com/petervanderdoes/gitflow-avh/wiki/Installing-on-Mac-OS-X)**
@@ -96,6 +101,8 @@ git commit --amend
 ```
 
 ## 🤝 Contributing
+
+This section shows two options: using Git Flow and not using Git Flow. Choose one; don't use both.👈
 
 After cloning the repo, initialize the local repository with gitflow(if you use it):
 
@@ -205,14 +212,14 @@ Use airbnb naming conventions:
 
 Naming cheatsheet
 https://github.com/kettanaito/naming-cheatsheet
+
 Clean code for javaScript
 https://github.com/ryanmcdermott/clean-code-javascript
 
 #### Variables
 
 Use declarative style and avoid single letter names. If you use abbreveature leave comment with
-deciphering
-abbreviations.
+deciphering abbreviations.
 
 #### Selectors
 
