@@ -1,4 +1,4 @@
-# 🤖 AiLab
+# 🤖 AiLab 🧪
 The monorepo is dedicated to housing `packages/` powering the development of web `apps/` that provides self-hosted
 AI chat.
 
@@ -20,6 +20,7 @@ Don't forget to
 and hit the notification bell to stay updated on future streams.
 
 ## 🕴️Jump to:
+- [🚀 Launching Dev Mode](#-launching-dev-mode)
 - [💡 Usage](#-usage)
   - [⛓️ Cross Dependencies in npm](#%EF%B8%8F-cross-dependencies-in-npm)
   - [🌿 Git flow](#-git-flow)
@@ -28,6 +29,23 @@ and hit the notification bell to stay updated on future streams.
   - [📝 Preparing a good PR](#-preparing-a-good-pr)
   - [🔧 Maintaining](#-maintaining)
   - [🏷️ Naming convention](#%EF%B8%8F-naming-convention)
+
+# 🚀 Launching Dev Mode
+☝️Only Developing mode available at this stage of the project.
+
+Clone a repo
+```sh
+git clone git@github.com:VladimirPal/ailab.git && cd ailab
+```
+Or using https if you are not a github user
+```sh
+git clone https://github.com/VladimirPal/ailab.git && cd ailab
+```
+
+## Docker
+```sh
+./docker/cli.sh up development
+```
 
 # 💡 Usage
 We use [SemVer][semver] specification for versioning, which dictate how version numbers are assigned
@@ -62,13 +80,11 @@ To make the git flow experience smoother you can use **custom git commands**(reg
 
 - [git-flow](https://github.com/petervanderdoes/gitflow-avh)
 
-- **[Installation
-  instruction](https://github.com/petervanderdoes/gitflow-avh/wiki/Installing-on-Mac-OS-X)**
+- **[Installation instruction](https://github.com/petervanderdoes/gitflow-avh/wiki/Installing-on-Mac-OS-X)**
 - **[git-flow commands](https://github.com/petervanderdoes/gitflow-avh/wiki#reference)**
 
 [Setup](https://github.com/petervanderdoes/gitflow-avh#initialization) a git repository for
-**git-flow** usage(store **
-git-flow** config in .git/config):
+**git-flow** usage(store **git-flow** config in .git/config):
 
 ```sh
 git flow init -d
